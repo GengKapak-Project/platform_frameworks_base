@@ -188,6 +188,7 @@ import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.app.IVoiceInteractor;
 import com.android.internal.content.ReferrerIntent;
+import com.android.internal.gmscompat.GmsHooks;
 import com.android.internal.os.BinderInternal;
 import com.android.internal.os.RuntimeInit;
 import com.android.internal.os.SomeArgs;
@@ -4484,6 +4485,7 @@ public final class ActivityThread extends ClientTransactionHandler
             context.setOuterContext(service);
             service.attach(context, this, data.info.name, data.token, app,
                     ActivityManager.getService());
+            GmsHooks.attachService(service);
             service.onCreate();
             mServicesData.put(data.token, data);
             mServices.put(data.token, service);
@@ -6997,9 +6999,9 @@ public final class ActivityThread extends ClientTransactionHandler
         }
         if (holder == null) {
             if (UserManager.get(c).isUserUnlocked(userId)) {
-                Slog.e(TAG, "Failed to find provider info for " + auth);
+                if (DEBUG_MESSAGES) Slog.e(TAG, "Failed to find provider info for " + auth);
             } else {
-                Slog.w(TAG, "Failed to find provider info for " + auth + " (user not unlocked)");
+                if (DEBUG_MESSAGES) Slog.w(TAG, "Failed to find provider info for " + auth + " (user not unlocked)");
             }
             return null;
         }

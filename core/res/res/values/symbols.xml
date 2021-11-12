@@ -2862,6 +2862,7 @@
   <java-symbol type="color" name="chooser_row_divider" />
   <java-symbol type="layout" name="chooser_row_direct_share" />
   <java-symbol type="bool" name="config_supportDoubleTapWake" />
+  <java-symbol type="bool" name="config_supportGloveMode" />
   <java-symbol type="drawable" name="ic_perm_device_info" />
   <java-symbol type="string" name="config_radio_access_family" />
   <java-symbol type="string" name="notification_inbox_ellipsis" />
@@ -3614,6 +3615,11 @@
   <java-symbol type="string" name="foreground_service_apps_in_background" />
   <java-symbol type="string" name="foreground_service_tap_for_details" />
   <java-symbol type="string" name="foreground_service_multiple_separator" />
+
+  <java-symbol type="string" name="foreground_service_gmscompat_group" />
+  <java-symbol type="string" name="foreground_service_gmscompat_channel" />
+  <java-symbol type="string" name="foreground_service_gmscompat_channel_desc" />
+  <java-symbol type="string" name="foreground_service_gmscompat_notif_desc" />
 
   <java-symbol type="bool" name="config_enableCredentialFactoryResetProtection" />
 
@@ -4427,4 +4433,21 @@
   <java-symbol type="bool" name="config_volumeShowRemoteSessions" />
 
   <java-symbol type="integer" name="config_customizedMaxCachedProcesses" />
+
+  <!-- App error dialog -->
+  <java-symbol type="id" name="aerr_copy" />
+  <java-symbol type="string" name="url_copy_success" />
+  <java-symbol type="string" name="url_copy_failed" />
+
+  <!-- Vendor signatures -->
+  <java-symbol type="array" name="config_vendorPlatformSignatures" />
+
+  <!-- Package Manager -->
+  <java-symbol type="array" name="config_deviceDisabledComponents" />
+  <java-symbol type="array" name="config_globallyDisabledComponents" />
+  <java-symbol type="array" name="config_forceEnabledComponents" />
+
+  <!-- Device keyhandlers -->
+  <java-symbol type="array" name="config_deviceKeyHandlerLibs" />
+  <java-symbol type="array" name="config_deviceKeyHandlerClasses" />
 </resources>

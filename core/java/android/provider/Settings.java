@@ -36,6 +36,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.SearchManager;
 import android.app.WallpaperManager;
+import android.app.compat.gms.GmsCompat;
 import android.compat.annotation.UnsupportedAppUsage;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -2803,6 +2804,10 @@ public final class Settings {
         public boolean putStringForUser(ContentResolver cr, String name, String value,
                 String tag, boolean makeDefault, final int userHandle,
                 boolean overrideableByRestore) {
+            if (GmsCompat.isEnabled()) {
+                return true;
+            }
+
             try {
                 Bundle arg = new Bundle();
                 arg.putString(Settings.NameValueTable.VALUE, value);
@@ -9391,6 +9396,24 @@ public final class Settings {
                 "night_display_last_activated_time";
 
         /**
+         * Display color balance for the red channel, from 0 to 255.
+         * @hide
+         */
+        public static final String DISPLAY_COLOR_BALANCE_RED = "display_color_balance_red";
+
+        /**
+         * Display color balance for the green channel, from 0 to 255.
+         * @hide
+         */
+        public static final String DISPLAY_COLOR_BALANCE_GREEN = "display_color_balance_green";
+
+        /**
+         * Display color balance for the blue channel, from 0 to 255.
+         * @hide
+         */
+        public static final String DISPLAY_COLOR_BALANCE_BLUE = "display_color_balance_blue";
+
+        /**
          * Control whether display white balance is currently enabled.
          * @hide
          */
@@ -14954,6 +14977,12 @@ public final class Settings {
          * @hide
          */
         public static final String ONE_HANDED_KEYGUARD_SIDE = "one_handed_keyguard_side";
+
+        /**
+         * Google Hybrid Battery Warnings
+         * @hide
+         */
+        public static final String HYBRID_SYSUI_BATTERY_WARNING_FLAGS = "hybrid_sysui_battery_warning_flags";
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to

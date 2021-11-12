@@ -171,6 +171,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.security.spec.KeySpec;
 import java.util.ArrayList;
@@ -1579,7 +1580,8 @@ class StorageManagerService extends IStorageManager.Stub
 
             // Adoptable public disks are visible to apps, since they meet
             // public API requirement of being in a stable location.
-            if (vol.disk.isAdoptable()) {
+	    // Assume all SDs match this as well
+            if (vol.disk.isAdoptable() || vol.disk.isSd()) {
                 vol.mountFlags |= VolumeInfo.MOUNT_FLAG_VISIBLE;
             }
 
@@ -2163,7 +2165,8 @@ class StorageManagerService extends IStorageManager.Stub
         try {
             fos = mSettingsFile.startWrite();
 
-            TypedXmlSerializer out = Xml.resolveSerializer(fos);
+            TypedXmlSerializer out = Xml.newFastSerializer();
+            out.setOutput(fos, StandardCharsets.UTF_8.name());
             out.startDocument(null, true);
             out.startTag(null, TAG_VOLUMES);
             out.attributeInt(null, ATTR_VERSION, VERSION_FIX_PRIMARY);

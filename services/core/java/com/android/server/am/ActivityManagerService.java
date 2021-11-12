@@ -187,6 +187,7 @@ import android.app.SyncNotedAppOp;
 import android.app.WaitResult;
 import android.app.backup.BackupManager.OperationType;
 import android.app.backup.IBackupManager;
+import android.app.compat.gms.GmsCompat;
 import android.app.job.JobParameters;
 import android.app.usage.UsageEvents;
 import android.app.usage.UsageEvents.Event;
@@ -4452,12 +4453,7 @@ public class ActivityManagerService extends IActivityManager.Stub
 
             ProfilerInfo profilerInfo = mAppProfiler.setupProfilerInfoLocked(thread, app, instr);
 
-            // We deprecated Build.SERIAL and it is not accessible to
-            // Instant Apps and target APIs higher than O MR1. Since access to the serial
-            // is now behind a permission we push down the value.
-            final String buildSerial = (!appInfo.isInstantApp()
-                    && appInfo.targetSdkVersion < Build.VERSION_CODES.P)
-                            ? sTheRealBuildSerial : Build.UNKNOWN;
+            final String buildSerial = Build.UNKNOWN;
 
             // Figure out whether the app needs to run in autofill compat mode.
             AutofillOptions autofillOptions = null;
@@ -11910,6 +11906,10 @@ public class ActivityManagerService extends IActivityManager.Stub
 
     boolean isSingleton(String componentProcessName, ApplicationInfo aInfo,
             String className, int flags) {
+        if (GmsCompat.isGmsApp(aInfo)) {
+            return false;
+        }
+
         boolean result = false;
         // For apps that don't have pre-defined UIDs, check for permission
         if (UserHandle.getAppId(aInfo.uid) >= FIRST_APPLICATION_UID) {

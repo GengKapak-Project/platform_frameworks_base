@@ -764,6 +764,20 @@
     <string name="foreground_service_multiple_separator"><xliff:g id="left_side">%1$s</xliff:g>,
         <xliff:g id="right_side">%2$s</xliff:g></string>
 
+    <!-- Name for foreground service notification channel group created by GmsCompat  -->
+    <string name="foreground_service_gmscompat_group">Compatibility</string>
+
+    <!-- Name for foreground service notification channel created by GmsCompat  -->
+    <string name="foreground_service_gmscompat_channel">Services</string>
+
+    <!-- Description for foreground service notification channel created by GmsCompat  -->
+    <string name="foreground_service_gmscompat_channel_desc">These notifications are created by the
+        Google Play Services compatibility layer in order to keep services running in the
+        background.\n\nDisable this category to hide the unnecessary notifications.</string>
+
+    <!-- Description for foreground service notifications created by GmsCompat  -->
+    <string name="foreground_service_gmscompat_notif_desc">Tap to hide</string>
+
     <!-- Displayed to the user to tell them that they have started up the phone in "safe mode" -->
     <string name="safeMode">Safe mode</string>
 
@@ -837,6 +851,16 @@
     <!-- Description of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permgroupdesc_sensors">access sensor data about your vital signs</string>
 
+    <!-- Title of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permgrouplab_otherSensors">Sensors</string>
+    <!-- Description of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permgroupdesc_otherSensors">access sensor data about orientation, movement, etc.</string>
+
+    <!-- Title of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permgrouplab_network">Network</string>
+    <!-- Description of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permgroupdesc_network">access the network</string>
+
     <!-- Title for the capability of an accessibility service to retrieve window content. -->
     <string name="capability_title_canRetrieveWindowContent">Retrieve window content</string>
     <!-- Description for the capability of an accessibility service to retrieve window content. -->
@@ -879,6 +903,18 @@
     <string name="capability_desc_canTakeScreenshot">Can take a screenshot of the display.</string>
 
     <!--  Permissions -->
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_fakePackageSignature">Spoof package signature</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_fakePackageSignature">Allows the app to pretend to be a different app. Malicious applications might be able to use this to access private application data. Legitimate uses include an emulator pretending to be what it emulates. Grant this permission with caution only!</string>
+    <!-- Title of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permgrouplab_fake_package_signature">Spoof package signature</string>
+    <!-- Description of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permgroupdesc_fake_package_signature">allow to spoof package signature</string>
+    <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_fake_package_signature">Allow
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to spoof package signature?</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_statusBar">disable or modify status bar</string>
@@ -1159,6 +1195,13 @@
     <!-- Description of the body sensors permission, listed so the user can decide whether to allow the application to access data from body sensors. [CHAR LIMIT=NONE] -->
     <string name="permdesc_bodySensors" product="default">Allows the app to access data from sensors
     that monitor your physical condition, such as your heart rate.</string>
+
+    <!-- Title of the sensors permission, listed so the user can decide whether to allow the application to access sensor data. [CHAR LIMIT=80] -->
+    <string name="permlab_otherSensors">access sensors (like the compass)
+    </string>
+    <!-- Description of the sensors permission, listed so the user can decide whether to allow the application to access data from sensors. [CHAR LIMIT=NONE] -->
+    <string name="permdesc_otherSensors" product="default">Allows the app to access data from sensors
+    monitoring orientation, movement, vibration (including low frequency sound) and environmental data</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_readCalendar">Read calendar events and details</string>
@@ -6035,4 +6078,9 @@ ul.</string>
     <string name="ui_translation_accessibility_translated_text"><xliff:g id="message" example="Hello">%1$s</xliff:g> Translated.</string>
     <!-- Accessibility message announced to notify the user when the system has finished translating the content displayed on the screen to a different language after the user requested translation. [CHAR LIMIT=NONE] -->
     <string name="ui_translation_accessibility_translation_finished">Message translated from <xliff:g id="from_language" example="English">%1$s</xliff:g> to <xliff:g id="to_language" example="French">%2$s</xliff:g>.</string>
+
+    <!-- Button that copies the url to the log of a crashed application -->
+    <string name="aerr_copy">Copy crash log URL</string>
+    <string name="url_copy_success">URL copied successfully</string>
+    <string name="url_copy_failed">An error occured while uploading the log to pasty</string>
 </resources>
